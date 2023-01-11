@@ -149,6 +149,11 @@ public class ActVideoTrimmer extends LocalizationActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        // Disable swipe to finish()
+    }
+
+    @Override
     protected void attachBaseContext(@NotNull Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
