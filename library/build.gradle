@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
 android {
     compileSdkVersion 32
     buildToolsVersion "31.0.0"
@@ -50,6 +54,32 @@ dependencies {
     implementation 'com.akexorcist:localization:1.2.9'
     implementation 'com.google.code.gson:gson:2.9.0'
 }
+
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId "com.gowtham"
+            artifactId "videotrimmer"
+            version "22.1.7171670"
+            artifact("$buildDir/outputs/aar/library-debug.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/pawin/android-video-trimmer")
+            credentials {
+                def properties = new Properties()
+                properties.load(new FileInputStream(rootProject.file("local.properties")))
+
+                username = properties["gpr.user"] ?: System.getenv("USERNAME")
+                password = properties["gpr.key"] ?: System.getenv("TOKEN")
+            }
+        }
+    }
 }
