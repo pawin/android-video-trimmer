@@ -5,7 +5,7 @@
     style="@style/LView"
     android:layout_gravity="bottom"
     android:layout_marginBottom="60dp"
-    android:paddingHorizontal="20dp"
+    android:paddingHorizontal="10dp"
     android:clickable="true"
     android:focusable="true"
     android:gravity="center_vertical"
