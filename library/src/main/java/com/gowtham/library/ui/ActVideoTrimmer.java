@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -37,9 +38,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.exoplayer2.C;
+import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.SeekParameters;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
@@ -199,7 +202,13 @@ public class ActVideoTrimmer extends LocalizationActivity {
      **/
     private void initPlayer() {
         try {
-            videoPlayer = new ExoPlayer.Builder(this).build();
+            videoPlayer = new ExoPlayer.Builder(this)
+                    .setSeekBackIncrementMs(2000)
+                    .setSeekForwardIncrementMs(2000)
+                    .setSeekParameters(SeekParameters.CLOSEST_SYNC)
+                    .setLoadControl(new DefaultLoadControl.Builder().setBufferDurationsMs(1000, 5500, 1000, 1000).build())
+                    .build();
+
             playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
             playerView.setPlayer(videoPlayer);
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
