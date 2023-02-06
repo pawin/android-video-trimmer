@@ -19,7 +19,7 @@ android {
         targetSdkVersion 32
         consumerProguardFiles "consumer-rules.pro"
 
-        ndkVersion '22.1.7171673-pawin'
+        ndkVersion '22.1.7171674-pawin'
     }
 
     sourceSets {
@@ -64,7 +64,7 @@ publishing {
         bar(MavenPublication) {
             groupId "com.gowtham"
             artifactId "videotrimmer"
-            version "22.1.7171673-pawin"
+            version "22.1.7171674-pawin"
             artifact("$buildDir/outputs/aar/library-debug.aar")
         }
     }

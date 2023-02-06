@@ -515,6 +515,15 @@ public class ActVideoTrimmer extends LocalizationActivity {
     }
 
     private void trimVideo() {
+        // If range is the same as original video just return the original file
+        if (lastMinValue == 0 && lastMaxValue == totalDuration) {
+            Intent intent = new Intent();
+            intent.putExtra(TrimVideo.TRIMMED_VIDEO_PATH, uri.getPath());
+            setResult(RESULT_OK, intent);
+            finish();
+            return;
+        }
+
         if (isValidVideo) {
             //not exceed given maxDuration if has given
             outputPath = getFileName();
