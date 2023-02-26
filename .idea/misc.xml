@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25177304964539005" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.25177304964539005" />
+        <entry key="app/src/main/res/menu/menu_video.xml" value="0.35462962962962963" />
+        <entry key="library/src/main/res/drawable/ic_done.xml" value="0.2435" />
+        <entry key="library/src/main/res/layout/act_video_trimmer.xml" value="0.24814814814814815" />
+        <entry key="library/src/main/res/layout/view_video_controller.xml" value="0.24814814814814815" />
+      </map>
+    </option>
+  </component>
   <component name="MavenBuildProjectComponent">
     <option name="mavenExecutable" value="" />
     <option name="Settings File" value="" />
